@@ -9,7 +9,7 @@ public class Main extends JavaPlugin {
 
   public void onEnable(){
 	  
-    System.out.println("Calculator plugin is Enabled.");
+    getLogger().info("Calculator plugin is Enabled.");
     
     
     

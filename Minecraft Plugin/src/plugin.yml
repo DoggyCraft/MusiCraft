@@ -1,0 +1,16 @@
+name: Calculator
+main: mc.holagrimola.Main
+version: 0.1
+commands:
+  calculator:
+    usage: /<command>
+    description: The command for the Calculator plugin.
+  calc:
+    usage: /<command>
+    description: The command for the Calculator plugin.
+  c:
+    usage: /<command>
+    description: The command for the Calculator plugin.
+  calculate:
+    usage: /<command>
+    description: The command for the Calculator plugin.

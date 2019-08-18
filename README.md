@@ -29,6 +29,6 @@ Compiling MusiCraft.jar
 *	JMusiCraft has been developed using Eclipse (But any other IDE should work as well)
 *	Checkout the MusiCraft repo using [git](https://git-scm.com/downloads) in a Command Line: `git clone https://github.com/DoggyCraftDK/MusiCraft.git`
 *	Open the MusiCraft project folder in Eclipse (or another IDE of choice)
-*	Right click the Gods project folder in Eclipse and select "Run as maven build..."
+*	Right click the MusiCraft project folder in Eclipse and select "Run as maven build..."
 *	Click the "Run" button in the configuration window that appears
 *	The MusiCraft.jar file will be compiled and available in the /target folder under your project folder

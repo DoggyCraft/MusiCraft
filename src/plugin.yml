@@ -1,0 +1,12 @@
+name: MusiCraft
+main: mc.holagrimola.MusiCraft
+version: 0.0.1
+description: Adding instruments to your server!
+author: Holagrimola
+commands:
+  musicraft:
+    usage: /<command>
+    description: The main command for the MusiCraft plugin.
+  mc:
+    usage: /<command>
+    description: The main command for the MusiCraft plugin.

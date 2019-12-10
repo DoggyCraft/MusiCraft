@@ -22,7 +22,8 @@ public class MusiCraft extends JavaPlugin implements Listener {
 		//Sends a message to the server console that the plugin has started.
 		getLogger().info("MusiCraft plugin has started.");
 		
-		getServer().addRecipe(Guitar.craftGuitar());
+		Guitar.craftGuitar(this);
+		
 		
 	}
 	
@@ -38,10 +39,9 @@ public class MusiCraft extends JavaPlugin implements Listener {
 				if(args.length == 1){
 					
 					//Location l = player.getLocation();
-
 					
 					switch(args[0].toLowerCase()){
-						//case "guitar" : Guitar.spawnGuitar(player); break;
+						case "guitar" : Guitar.getGuitar(); break;
 						case "help" : this.getHelp(player); break;
 						case "manual" : MusiCraft.manual(player); break;
 						case "recipe" : this.getCrafting(player); break;
@@ -74,8 +74,9 @@ public class MusiCraft extends JavaPlugin implements Listener {
 		player.sendMessage(ChatColor.GOLD + " * * * MusiCraft * * * \n" + ChatColor.AQUA + "- " + ChatColor.WHITE + "/mc help\n" + ChatColor.AQUA + "- " + ChatColor.WHITE + "/mc recipe\n" + ChatColor.AQUA + "- " + ChatColor.WHITE + "/mc info");
 	}
 	
+	
 	public void getCrafting(Player player){
-		player.sendMessage(ChatColor.AQUA + "Put the following items into a crafting table:\n" + ChatColor.WHITE + "Nothing, String, Stick,\nString, Redstone, String,\nOak log, String, Nothing.");
+		player.sendMessage(ChatColor.AQUA + "Put the following items into a crafting table:\n" + ChatColor.WHITE + "Nothing, String, Stick,\nString, Redstone Block, String,\nOak log, String, Nothing.");
 	}
 	
 	public static void manual(Player player){
@@ -84,7 +85,17 @@ public class MusiCraft extends JavaPlugin implements Listener {
 		
 		meta.setAuthor("Holagrimola");
 		meta.setTitle(ChatColor.DARK_BLUE + "MusiCraft Manual - How to do MusiCraft");
-		meta.setPage(1, "Hello, and welcome to MusiCraft! \n This plugin gives you the freedom to make your own Guitar on your minecraft server, without mods! \n Do note that more instruments are coming \n Now you might wonder, how do I get started on Musicraft?");
+		meta.addPage("Hello, and welcome to MusiCraft! \n\nThis plugin gives you the freedom to make your own Guitar on your minecraft-server, even without mods! \n\nDo note that more instruments are coming...");
+		meta.addPage("Now you might wonder, how do I get started on Musicraft? \n\nThat is something we will be exploring in the following pages!");
+		meta.addPage("Table of contents: \n\nCrafting Recipe \nHow to play");
+		meta.addPage("Crafting Recipe \nS = String \nT = Stick \nR = Redstone dust \nL = Log \nN = Nothing \n\n NST \n SRS \n LSN");
+		meta.addPage("How to play: \n\nTo play the guitar you need to place it in the off-hand. \n\nWhen it is in the off-hand, play it by right-clicking or left-clicking. \n\nYour equipped slot in your hotbar changes the pitch.");
+		meta.addPage("The scale is adjusted to fit 24 different nodes.\nLeft-click is the lowest\nNormal right click is the middle section\nShift + right click is the highest."); 
+		meta.addPage("The following pages describes the way how the scales areadjusted in slot on hotbar and pitch. Slot 9 is the same as slot 8.\n\nThe lower scale goes like this: \n\n1  2 3  4 5  6 7  8\nF♯ G G# A A# B C C#\n");
+		meta.addPage("Middle like this:\n\n1 2  3 4  5 6  7 8\nD D# E F F# G G# A");
+		meta.addPage("Higher scale:\n\n1  2 3  4 5  6 7  8\nA# B C C# D D# E F F#");
+		meta.addPage("It might take a while to get the hold of, just like any other instrument, but keep training, and I'm sure you'll be able to create some awesome songs! :D \n\n And please be sure to show off your music-skills! ;)");
+		meta.addPage("Oh and btw, please give me information of what needs to be improved and so on ^^");
 		
 		manual.setItemMeta(meta);
 		player.getInventory().addItem(manual);
@@ -92,4 +103,6 @@ public class MusiCraft extends JavaPlugin implements Listener {
 		
 	}
 }
+
+
 

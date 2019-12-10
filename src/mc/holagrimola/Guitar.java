@@ -1,10 +1,18 @@
+
+
+
+
 package mc.holagrimola;
 
 
-import org.bukkit.Effect;
+import org.bukkit.Bukkit;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Particle;
 import org.bukkit.Sound;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +25,7 @@ import org.bukkit.event.block.Action;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class Guitar implements Listener {
+public class Guitar implements Listener  {
 	
 	private static final ItemStack itemGuitar = getGuitar();
 	
@@ -32,29 +40,85 @@ public class Guitar implements Listener {
 	}
 */
 	
-	public static ShapedRecipe craftGuitar(){
+	public static void craftGuitar(MusiCraft plugin){
 		
-		ShapedRecipe gr = new ShapedRecipe(itemGuitar);
+		
+		
+		NamespacedKey key = new NamespacedKey(plugin, "MCGuitar");
+		NamespacedKey key1 = new NamespacedKey(plugin, "MCGuitar1");
+		NamespacedKey key2 = new NamespacedKey(plugin, "MCGuitar2");
+		NamespacedKey key3 = new NamespacedKey(plugin, "MCGuitar3");
+		NamespacedKey key4 = new NamespacedKey(plugin, "MCGuitar4");
+		NamespacedKey key5 = new NamespacedKey(plugin, "MCGuitar5");
+		
+		ShapedRecipe gr = new ShapedRecipe(key, getGuitar());
+		ShapedRecipe gr1 = new ShapedRecipe(key1, getGuitar());
+		ShapedRecipe gr2 = new ShapedRecipe(key2, getGuitar());
+		ShapedRecipe gr3 = new ShapedRecipe(key3, getGuitar());
+		ShapedRecipe gr4 = new ShapedRecipe(key4, getGuitar());
+		ShapedRecipe gr5 = new ShapedRecipe(key5, getGuitar());
 		
 		gr.shape(" #*","#¤#","%# ");
-		gr.setIngredient('#', Material.STRING);
-		gr.setIngredient('*', Material.STICK);
-		gr.setIngredient('¤', Material.REDSTONE_BLOCK);
-		gr.setIngredient('%', Material.LOG);
+		gr1.shape(" #*","#¤#","%# ");
+		gr2.shape(" #*","#¤#","%# ");
+		gr3.shape(" #*","#¤#","%# ");
+		gr4.shape(" #*","#¤#","%# ");
+		gr5.shape(" #*","#¤#","%# ");
 		
-	return gr;
+		gr.setIngredient('#', Material.STRING);
+		gr1.setIngredient('#', Material.STRING);
+		gr2.setIngredient('#', Material.STRING);
+		gr3.setIngredient('#', Material.STRING);
+		gr4.setIngredient('#', Material.STRING);
+		gr5.setIngredient('#', Material.STRING);
+		
+		gr.setIngredient('*', Material.STICK);
+		gr1.setIngredient('*', Material.STICK);
+		gr2.setIngredient('*', Material.STICK);
+		gr3.setIngredient('*', Material.STICK);
+		gr4.setIngredient('*', Material.STICK);
+		gr5.setIngredient('*', Material.STICK);
+		
+		gr.setIngredient('¤', Material.REDSTONE);
+		gr1.setIngredient('¤', Material.REDSTONE);
+		gr2.setIngredient('¤', Material.REDSTONE);
+		gr3.setIngredient('¤', Material.REDSTONE);
+		gr4.setIngredient('¤', Material.REDSTONE);
+		gr5.setIngredient('¤', Material.REDSTONE);
+		
+		
+		gr.setIngredient('%', Material.STRIPPED_SPRUCE_WOOD);
+		gr1.setIngredient('%', Material.STRIPPED_ACACIA_WOOD);
+		gr2.setIngredient('%', Material.STRIPPED_BIRCH_WOOD);
+		gr3.setIngredient('%', Material.STRIPPED_OAK_WOOD);
+		gr4.setIngredient('%', Material.STRIPPED_DARK_OAK_WOOD);
+		gr5.setIngredient('%', Material.STRIPPED_JUNGLE_WOOD);
+		
+
+		
+		Bukkit.addRecipe(gr);
+		Bukkit.addRecipe(gr1);
+		Bukkit.addRecipe(gr2);
+		Bukkit.addRecipe(gr3);
+		Bukkit.addRecipe(gr4);
+		Bukkit.addRecipe(gr5);
+		
+		
 	}
 	
+
 	
 	
-	private static ItemStack getGuitar() {
-		ItemStack item = new ItemStack(Material.WOOD_SWORD,1);
+	
+	public static ItemStack getGuitar() {
+		ItemStack item = new ItemStack(Material.WOODEN_SWORD,1);
 		ItemMeta meta = item.getItemMeta(); 
 		
 		meta.setDisplayName(ChatColor.GOLD + "Guitar");
 		item.setItemMeta(meta);
 		return item;
 	}
+	
 	
 	
 	
@@ -127,6 +191,8 @@ public class Guitar implements Listener {
 		return pitch;
 	}
 	
+	
+	
 	@EventHandler
 	private void onRightClick(PlayerInteractEvent pie){
 		
@@ -141,14 +207,14 @@ public class Guitar implements Listener {
 		if(player.getInventory().getItemInOffHand().equals(itemGuitar)){
 			if(action.equals(Action.RIGHT_CLICK_AIR) || action.equals(Action.RIGHT_CLICK_BLOCK)){
 				
-				loc.getWorld().playSound(loc, Sound.BLOCK_NOTE_BASS, 1, pitchHandlerRight(player));
-				loc.getWorld().playEffect(loc2, Effect.NOTE, 0);
+				loc.getWorld().playSound(loc, Sound.BLOCK_NOTE_BLOCK_GUITAR, 1, pitchHandlerRight(player));
+				loc.getWorld().spawnParticle(Particle.NOTE, loc2, 1);
 				
 				}
 			if(action.equals(Action.LEFT_CLICK_AIR) || action.equals(Action.LEFT_CLICK_BLOCK)){
 				
-				loc.getWorld().playSound(loc, Sound.BLOCK_NOTE_BASS, 1, pitchHandlerLeft(player));
-				loc.getWorld().playEffect(loc2, Effect.NOTE, 0);
+				loc.getWorld().playSound(loc, Sound.BLOCK_NOTE_BLOCK_GUITAR, 1, pitchHandlerLeft(player));
+				loc.getWorld().spawnParticle(Particle.NOTE, loc2, 1);
 				
 			}
 		}
